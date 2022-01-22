@@ -1,0 +1,193 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #424242;
+
+    --config-default-position: -30rem;
+    --config-background-color: #ffffff;
+    --config-text-color: #424242;
+    --config-shadow-color: #42424220;
+
+    --game-tile-color: #dddddd;
+    --game-tile-hover-color: #eeeeee;
+}
+
+body, body * {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--background-color);
+}
+
+
+
+h1 {
+    text-align: center;
+    margin: 2rem 0;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+#control-buttons {
+    position: absolute;
+    top: 3rem;
+    right: 5rem;
+}
+
+#control-buttons button {
+    background-color: unset;
+    border: none;
+    font-size: 2rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: .35s ease-in-out;
+}
+
+#control-buttons button:hover {
+    transform: translate(0, -5px);
+}
+
+#settings-open:hover {
+    transform: translate(0, -5px) rotate(120deg) !important;
+}
+
+#settings-close {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 1.5rem 0 1rem 0;
+    cursor: pointer;
+    transition: .15s ease-in-out;
+    background-color: unset;
+    border: none;
+}
+
+#settings-close:hover {
+    transform: scale(1.25);
+}
+
+#config {
+    position: absolute;
+    top: 0;
+    right: var(--config-default-position);
+    height: 100%;
+    min-width: 350px;
+    background-color: var(--config-background-color);
+    padding: 0 2rem;
+    transition: .5s ease-out;
+    box-shadow: 0 0 5rem 1rem var(--config-shadow-color);
+    z-index: 10;
+}
+
+#config h2 {
+    margin: 2rem 0 1.5rem;
+}
+
+#config span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.75rem 0;
+}
+
+#config label, #config input {
+    font-size: 0.9rem;
+}
+
+#config input {
+    width: 60%;
+    border: none;
+    border-bottom: 0.1rem solid var(--config-text-color);
+    text-align: center;
+}
+
+
+
+
+
+#game {
+    margin: 5rem auto 0 auto;
+    width: 90%;
+    height: 75%;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 15px;
+    opacity: 0;
+    transition: .15s ease-in-out;
+}
+
+.game-tile {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    cursor: pointer;
+}
+
+.game-tile-background {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--game-tile-color);
+    border-radius: 0.5rem;
+    transition: .15s ease-in-out;
+    z-index: 2;
+}
+
+.game-tile:hover .game-tile-background {
+    background-color: var(--game-tile-hover-color);
+}
+
+.game-tile-flag, .game-tile-mine, .game-tile-near {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.game-tile-near {
+    font-weight: 800;
+    transition: .15s ease-in-out;
+    z-index: 1;
+}
+
+.game-tile-flag {
+    transition: .15s ease-in-out;
+    z-index: 3;
+}
+
+.game-tile-mine {
+    transition: .5s ease-in-out;
+    z-index: 3;
+}
+
+.game-hidden {
+    opacity: 0;
+}
+
+.game-shown {
+    opacity: 1;
+}
+
+
+
+
+
+*:focus {
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
