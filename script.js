@@ -89,6 +89,7 @@ const game = document.getElementById("game");
 const rows = document.getElementById("config-rows");
 const cols = document.getElementById("config-cols");
 const mines = document.getElementById("config-mines");
+const minesLeft = document.getElementById("game-mines-left");
 const reset = document.getElementById("config-reset");
 const message = document.getElementById("message");
 const messageText = document.getElementById("message-text");
@@ -109,6 +110,8 @@ const start = () => {
     // Places The Mines In Random Places (Later In First Reveal The Board Will Be Displaced)
     mineSweeper.placeMines();
     mineSweeper.setNearMinesTiles();
+
+    minesLeft.innerText = `Mines Left: ${mineSweeper.mines - mineSweeper.countFlags()}`;
 
     // This Callback Is Executed When The Game Ends And The Player Lost (Shows All The Mines)
     mineSweeper.loseCallback = (row, col) => {
@@ -163,6 +166,7 @@ const start = () => {
             flag.classList.remove("game-shown");
             flag.classList.add("game-hidden");
         }
+        minesLeft.innerText = `Mines Left: ${mineSweeper.mines - mineSweeper.countFlags()}`;
     };
 
     // This Callback Is For Rebuilding The Board For When The Displacement Function Is Executed

@@ -237,6 +237,7 @@ class Game {
     // Function In Charge Of Toggling The Flag In A Tile
     toggleFlag(row, col) {
         if (this.gameEnded) return false;
+        if (this.firstClick) return false;
         if (this.board[row][col]["revealed"]) return false;
         else if (this.board[row][col]["flag"]) {
             this.board[row][col]["flag"] = false;
@@ -248,6 +249,16 @@ class Game {
             this.flagCallback(row, col);
             return true;
         }
+    }
+
+    countFlags() {
+        let flags = 0;
+        for (let i = 0; i < this.rows; ++i) {
+            for (let j = 0; j < this.cols; ++j) {
+                if (this.board[i][j]["flag"]) ++flags;
+            }
+        }
+        return flags;
     }
 
 
