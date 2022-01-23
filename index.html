@@ -18,11 +18,16 @@
         <button id="settings-open" class="fas fa-cog"></button>
         <button id="help-button" class="fas fa-question"></button>
     </span>
+    <div id="message">
+        <h2 id="message-text">You Lost!</h2>
+        <button id="message-button">Play Again</button>
+    </div>
     <div id="game"></div>
     <div id="config">
         <button id="settings-close" class="fas fa-times"></button>
         <h2>General</h2>
-        <form>
+        <form id="config-form">
+            <button id="config-reset">Reset Game</button>
             <span>
                 <label>Rows</label>
                 <input id="config-rows" type="number" min="2" max="100" value="10">
@@ -33,10 +38,11 @@
             </span>
             <span>
                 <label>Mines</label>
-                <input id="config-mines" type="number" min="1" max="100" value="40">
+                <input id="config-mines" type="number" min="1" max="100" value="50">
             </span>
         </form>
     </div>
+    <script src="./tmi.min.js"></script>
     <script src="./game.js"></script>
     <script src="./script.js"></script>
 </body>

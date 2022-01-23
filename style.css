@@ -9,6 +9,11 @@
 
     --game-tile-color: #dddddd;
     --game-tile-hover-color: #eeeeee;
+    --game-icons-color: #424242;
+
+    --message-background-color: #ffffff;
+    --message-text-color: #424242;
+    --message-shadow-color: #42424220;
 }
 
 body, body * {
@@ -80,14 +85,14 @@ h1 {
     padding: 0 2rem;
     transition: .5s ease-out;
     box-shadow: 0 0 5rem 1rem var(--config-shadow-color);
-    z-index: 10;
+    z-index: 20;
 }
 
 #config h2 {
     margin: 2rem 0 1.5rem;
 }
 
-#config span {
+#config form span {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -95,11 +100,26 @@ h1 {
     margin: 0.75rem 0;
 }
 
-#config label, #config input {
+#config form label, #config form input, #config form button {
     font-size: 0.9rem;
 }
 
-#config input {
+#config form button {
+    background-color: var(--config-background-color);
+    color: var(--config-text-color);
+    border: 0.15rem solid var(--config-text-color);
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: .15s ease-in-out;
+}
+
+#config form button:hover {
+    color: var(--config-background-color);
+    background-color: var(--config-text-color);
+}
+
+#config form input {
     width: 60%;
     border: none;
     border-bottom: 0.1rem solid var(--config-text-color);
@@ -111,7 +131,7 @@ h1 {
 
 
 #game {
-    margin: 5rem auto 0 auto;
+    margin: 5rem auto 3rem auto;
     width: 90%;
     height: 75%;
     display: grid;
@@ -148,6 +168,12 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    color: var(--game-icons-color);
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .game-tile-near {
@@ -172,6 +198,51 @@ h1 {
 
 .game-shown {
     opacity: 1;
+}
+
+
+
+
+
+#message {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.5rem 3rem;
+    background-color: var(--background-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem 0.5rem var(--message-shadow-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s ease-in-out;
+}
+
+#message-text {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+#message-button {
+    background-color: var(--message-background-color);
+    border: 0.2rem solid var(--message-text-color);
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .15s ease-in-out;
+}
+
+#message-button:hover {
+    background-color: var(--message-text-color);
+    color: var(--message-background-color);
 }
 
 
