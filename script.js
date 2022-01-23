@@ -154,6 +154,7 @@ const start = () => {
 
     // This Callback Is Executed When The Game Ends And The Player Won
     mineSweeper.winCallback = (row, col) => {
+        minesLeft.innerText = `Mines Left: 0`;
         let flags = document.getElementsByClassName("game-tile-flag");
         for (let flag of flags) {
             flag.classList.remove("game-shown");

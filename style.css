@@ -27,6 +27,7 @@ body, body * {
 body {
     overflow-x: hidden;
     background-color: var(--background-color);
+    min-height: 105vh;
 }
 
 
@@ -76,7 +77,7 @@ h1 {
 }
 
 #config {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: var(--config-default-position);
     height: 100%;
@@ -139,7 +140,6 @@ h1 {
     width: 90%;
     height: 75%;
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
     gap: 15px;
     opacity: 0;
     transition: .15s ease-in-out;
