@@ -188,6 +188,7 @@ class Game {
         }
     }
 
+    // Function To Reveal Near Tiles That Are 100% Not Mines Acording To The Flags
     revealNearSecured(row, col) {
         let nearFlags = 0;
         if (row > 0) {
@@ -251,6 +252,7 @@ class Game {
         }
     }
 
+    // Counts The Total Amount Of Flags In The Board
     countFlags() {
         let flags = 0;
         for (let i = 0; i < this.rows; ++i) {
@@ -277,10 +279,12 @@ class Game {
 
 
 
+    // Callback Executed Once The Game Has Ended With A Win (Change It Once The Class Is Instanciated)
     winCallback() {
         return true;
     }
 
+    // Checks If There's Any Not Revealed Tiles That Aren't Mines
     checkIfWon() {
         for (let i = 0; i < this.rows; ++i) {
             for (let j = 0; j < this.cols; ++j) {

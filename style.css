@@ -33,14 +33,14 @@ body {
 
 h1 {
     text-align: center;
-    margin: 2rem 0;
+    margin: 4rem 0 2rem 0;
     font-weight: 800;
     font-size: 2.5rem;
 }
 
 #control-buttons {
     position: absolute;
-    top: 3rem;
+    top: 2rem;
     right: 5rem;
 }
 
@@ -131,7 +131,7 @@ h1 {
 
 
 #game-mines-left {
-    margin: 5rem 5rem 2rem 5rem;
+    margin: 4rem 5rem 1.5rem 5rem;
 }
 
 #game {

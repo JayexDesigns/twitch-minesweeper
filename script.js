@@ -20,9 +20,9 @@ configForm.addEventListener('submit', (e) => e.preventDefault());
 
 // Creates All The DOM Elements That Corresponds To The Board, Including Mines And Flags That Are Hidden At Start
 const createBoard = (mineSweeper) => {
-    game.innerHTML = ``;
+    gameCanvas.innerHTML = ``;
 
-    game.style.gridTemplateColumns = `repeat(${cols.value}, 1fr)`;
+    gameCanvas.style.gridTemplateColumns = `repeat(${colsInput.value}, 1fr)`;
 
     for (let i = 0; i < mineSweeper.rows; ++i) {
         for (let j = 0; j < mineSweeper.cols; ++j) {
@@ -32,7 +32,7 @@ const createBoard = (mineSweeper) => {
             tile.id = `game-tile-${i}-${j}`;
             tile.addEventListener('mousedown', (e) => tileClickHandler(e, i, j));
             tile.addEventListener('contextmenu', (e) => e.preventDefault(), false);
-            game.appendChild(tile);
+            gameCanvas.appendChild(tile);
 
             let tileBackground = document.createElement("div");
             tileBackground.classList.add("game-tile-background");
@@ -85,27 +85,48 @@ const tileClickHandler = (e, i, j) => {
 
 
 
-const game = document.getElementById("game");
-const rows = document.getElementById("config-rows");
-const cols = document.getElementById("config-cols");
-const mines = document.getElementById("config-mines");
+const gameCanvas = document.getElementById("game");
+const rowsInput = document.getElementById("config-rows");
+const colsInput = document.getElementById("config-cols");
+const minesInput = document.getElementById("config-mines");
 const minesLeft = document.getElementById("game-mines-left");
-const reset = document.getElementById("config-reset");
-const message = document.getElementById("message");
+const resetButton = document.getElementById("config-reset");
+const messageBox = document.getElementById("message");
 const messageText = document.getElementById("message-text");
 const messageButton = document.getElementById("message-button");
 let mineSweeper;
 
 // When The Function Start All The Game Resets
 const start = () => {
-    message.style.visibility = "hidden";
-    message.style.opacity = "0";
-    message.style.top = "40%";
+    // Initial Position For The End Game Message
+    messageBox.style.visibility = "hidden";
+    messageBox.style.opacity = "0";
+    messageBox.style.top = "40%";
 
-    // sanitizeInputs();
+    // Sanitize Inputs
+    let rows = rowsInput.value;
+    let cols = colsInput.value;
+    if (rows < 2) {
+        rows = 2;
+        rowsInput.value = rows;
+    }
+    if (cols < 2) {
+        cols = 2;
+        colsInput.value = cols;
+    }
+
+    let mines = minesInput.value;
+    if (mines < 1) {
+        mines = 1;
+        minesInput.value = mines;
+    }
+    else if (mines >= rows * cols) {
+        mines = (rows * cols) - 1;
+        minesInput.value = mines;
+    }
 
     // Creates The Game
-    mineSweeper = new Game(rows.value, cols.value, mines.value);
+    mineSweeper = new Game(rows, cols, mines);
 
     // Places The Mines In Random Places (Later In First Reveal The Board Will Be Displaced)
     mineSweeper.placeMines();
@@ -126,9 +147,9 @@ const start = () => {
             mine.classList.add("game-shown");
         }
         messageText.innerText = "You Lost!";
-        message.style.visibility = "visible";
-        message.style.opacity = "1";
-        message.style.top = "50%";
+        messageBox.style.visibility = "visible";
+        messageBox.style.opacity = "1";
+        messageBox.style.top = "50%";
     };
 
     // This Callback Is Executed When The Game Ends And The Player Won
@@ -139,9 +160,9 @@ const start = () => {
             flag.classList.add("game-hidden");
         }
         messageText.innerText = "You Won!";
-        message.style.visibility = "visible";
-        message.style.opacity = "1";
-        message.style.top = "50%";
+        messageBox.style.visibility = "visible";
+        messageBox.style.opacity = "1";
+        messageBox.style.top = "50%";
     };
 
     // This Callback Is Executed When A Tile Is Revealed So The Background Disapears And Shows The Number Behind It
@@ -174,15 +195,15 @@ const start = () => {
 
     createBoard(mineSweeper);
 
-    game.style.opacity = 1;
+    gameCanvas.style.opacity = 1;
 };
 
 
 
-rows.addEventListener('change', start);
-cols.addEventListener('change', start);
-mines.addEventListener('change', start);
-reset.addEventListener('click', start);
+rowsInput.addEventListener('change', start);
+colsInput.addEventListener('change', start);
+minesInput.addEventListener('change', start);
+resetButton.addEventListener('click', start);
 messageButton.addEventListener('click', start);
 
 start();
