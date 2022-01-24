@@ -16,7 +16,7 @@ for (let form of forms) form.addEventListener('submit', (e) => e.preventDefault(
 
 const themeButton = document.getElementById("theme-toggle");
 let currentTheme = "light";
-themeButton.addEventListener('click', () => {
+const changeTheme = () => {
     let root = document.querySelector(':root');
     if (currentTheme === "light") {
         currentTheme = "dark";
@@ -58,7 +58,26 @@ themeButton.addEventListener('click', () => {
         root.style.setProperty('--twitch-controls-background-color', '#000000b0');
         root.style.setProperty('--twitch-controls-text-color', '#ffffff');
     }
-});
+    else if (currentTheme === "natsumiii") {
+        root.style.setProperty('--background-color', '#fff4ef');
+        root.style.setProperty('--text-color', '#36121d');
+        root.style.setProperty('--config-background-color', '#9563c6');
+        root.style.setProperty('--config-text-color', '#fff4ef');
+        root.style.setProperty('--config-shadow-color', '#42424220');
+        root.style.setProperty('--game-tile-color', '#ea8ac8');
+        root.style.setProperty('--game-tile-hover-color', '#f5c4e3');
+        root.style.setProperty('--game-tile-hovering', '#9563c6');
+        root.style.setProperty('--game-tile-hovering-revealed', '#f2d7ce');
+        root.style.setProperty('--game-icons-color', '#36121d');
+        root.style.setProperty('--message-background-color', '#fff4ef');
+        root.style.setProperty('--message-text-color', '#36121d');
+        root.style.setProperty('--message-shadow-color', '#42424220');
+        root.style.setProperty('--twitch-controls-background-color', '#000000b0');
+        root.style.setProperty('--twitch-controls-text-color', '#fff4ef');
+    }
+};
+
+themeButton.addEventListener('click', () => changeTheme());
 
 
 

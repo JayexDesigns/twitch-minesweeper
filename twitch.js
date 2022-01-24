@@ -68,6 +68,10 @@ twitchUsernameInput.addEventListener('change', (e) => {
         },
         channels: [username],
     });
+    if (username.toLowerCase() === "natsumiii") {
+        currentTheme = "natsumiii";
+        changeTheme();
+    }
     client.connect();
     startTwitchPlaymode();
     twitchControls.style.visibility = "visible";
@@ -267,6 +271,7 @@ const startTwitchPlaymode = () => {
     showVotes();
 
     client.on('message', (channel, tags, message, self) => {
+        console.log(`${tags["display-name"]}: ${message}`);
         if (options[message]) {
             let user = tags["display-name"];
             if (user === channel || hosts.includes(user) || !votes["users"].includes(user)) {

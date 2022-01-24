@@ -75,6 +75,7 @@ h1 {
     transition: .15s ease-in-out;
     background-color: unset;
     border: none;
+    color: var(--config-text-color);
 }
 
 #settings-close:hover {
@@ -96,6 +97,7 @@ h1 {
 
 #config h2 {
     margin: 2rem 0 1.5rem;
+    color: var(--config-text-color);
 }
 
 #config form span {
@@ -108,6 +110,7 @@ h1 {
 
 #config form label, #config form input, #config form button {
     font-size: 0.9rem;
+    color: var(--config-text-color);
 }
 
 #config form button {
@@ -280,7 +283,7 @@ h1 {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 1.5rem 3rem;
-    background-color: var(--background-color);
+    background-color: var(--message-background-color);
     border-radius: 0.5rem;
     box-shadow: 0 0 1rem 0.5rem var(--message-shadow-color);
     display: flex;
@@ -294,11 +297,13 @@ h1 {
 }
 
 #message-text {
+    color: var(--message-text-color);
     font-size: 3rem;
     margin: 1rem 0;
 }
 
 #message-button {
+    color: var(--message-text-color);
     background-color: var(--message-background-color);
     border: 0.2rem solid var(--message-text-color);
     border-radius: 0.5rem;
