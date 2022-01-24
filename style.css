@@ -129,6 +129,7 @@ h1 {
     width: 60%;
     border: none;
     border-bottom: 0.1rem solid var(--config-text-color);
+    background-color: var(--config-background-color);
     text-align: center;
 }
 

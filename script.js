@@ -14,6 +14,52 @@ settingsClose.addEventListener('click', () => {
 const forms = document.getElementsByTagName("form");
 for (let form of forms) form.addEventListener('submit', (e) => e.preventDefault());
 
+const themeButton = document.getElementById("theme-toggle");
+let currentTheme = "light";
+themeButton.addEventListener('click', () => {
+    let root = document.querySelector(':root');
+    if (currentTheme === "light") {
+        currentTheme = "dark";
+        themeButton.classList.remove("fa-sun");
+        themeButton.classList.add("fa-moon");
+        root.style.setProperty('--background-color', '#1a1a1a');
+        root.style.setProperty('--text-color', '#ffffff');
+        root.style.setProperty('--config-background-color', '#1a1a1a');
+        root.style.setProperty('--config-text-color', '#ffffff');
+        root.style.setProperty('--config-shadow-color', '#ffffff20');
+        root.style.setProperty('--game-tile-color', '#666666');
+        root.style.setProperty('--game-tile-hover-color', '#888888');
+        root.style.setProperty('--game-tile-hovering', '#cccccc');
+        root.style.setProperty('--game-tile-hovering-revealed', '#444444');
+        root.style.setProperty('--game-icons-color', '#ffffff');
+        root.style.setProperty('--message-background-color', '#1a1a1a');
+        root.style.setProperty('--message-text-color', '#ffffff');
+        root.style.setProperty('--message-shadow-color', '#ffffff20');
+        root.style.setProperty('--twitch-controls-background-color', '#000000b0');
+        root.style.setProperty('--twitch-controls-text-color', '#ffffff');
+    }
+    else if (currentTheme === "dark") {
+        currentTheme = "light";
+        themeButton.classList.remove("fa-moon");
+        themeButton.classList.add("fa-sun");
+        root.style.setProperty('--background-color', '#ffffff');
+        root.style.setProperty('--text-color', '#424242');
+        root.style.setProperty('--config-background-color', '#ffffff');
+        root.style.setProperty('--config-text-color', '#424242');
+        root.style.setProperty('--config-shadow-color', '#42424220');
+        root.style.setProperty('--game-tile-color', '#cccccc');
+        root.style.setProperty('--game-tile-hover-color', '#eeeeee');
+        root.style.setProperty('--game-tile-hovering', '#777777');
+        root.style.setProperty('--game-tile-hovering-revealed', '#eeeeee');
+        root.style.setProperty('--game-icons-color', '#424242');
+        root.style.setProperty('--message-background-color', '#ffffff');
+        root.style.setProperty('--message-text-color', '#424242');
+        root.style.setProperty('--message-shadow-color', '#42424220');
+        root.style.setProperty('--twitch-controls-background-color', '#000000b0');
+        root.style.setProperty('--twitch-controls-text-color', '#ffffff');
+    }
+});
+
 
 
 
