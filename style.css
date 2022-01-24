@@ -297,6 +297,7 @@ h1 {
 }
 
 #message-text {
+    text-align: center;
     color: var(--message-text-color);
     font-size: 3rem;
     margin: 1rem 0;

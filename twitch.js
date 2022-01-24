@@ -144,6 +144,11 @@ const startTwitchPlaymode = () => {
 
     twitchActionCallback = (mineSweeper, action) => {
         if (action === "lose" || action === "win" || action === "start") {
+            if (votes["users"].length > 0) {
+                let users = votes["users"].reverse();
+                if (users.length > 3) users =  users.slice(0, 3);
+                messageText.innerText = `You Lost!\nLast Action Made By:\n${users.join(", ")}`;
+            }
             resetVotes();
         }
         else if (action === "rebuild") {
@@ -151,7 +156,6 @@ const startTwitchPlaymode = () => {
             setPosition(pos[0], pos[1]);
         }
         else if (action === "reveal") {
-            // let pos = getFirstPossiblePosition();
             setPosition(position[0], position[1]);
         }
     };
