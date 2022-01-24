@@ -200,10 +200,13 @@ const start = () => {
     // This Callback Is For Rebuilding The Board For When The Displacement Function Is Executed
     mineSweeper.rebuildBoardCallback = () => {
         createBoard(mineSweeper);
-        if (twitchActionCallback) twitchActionCallback(mineSweeper, "rebuild");
+        if (twitchActionCallback) {
+            twitchActionCallback(mineSweeper, "rebuild");
+        }
     }
 
-    createBoard(mineSweeper);
+    mineSweeper.rebuildBoardCallback();
+    // createBoard(mineSweeper);
 
     gameCanvas.style.opacity = 1;
 };
