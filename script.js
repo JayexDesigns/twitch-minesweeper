@@ -11,8 +11,8 @@ settingsClose.addEventListener('click', () => {
     config.style.right = "var(--config-default-position)";
 });
 
-const configForm = document.getElementById("config-form");
-configForm.addEventListener('submit', (e) => e.preventDefault());
+const forms = document.getElementsByTagName("form");
+for (let form of forms) form.addEventListener('submit', (e) => e.preventDefault());
 
 
 
@@ -68,7 +68,7 @@ const createBoard = (mineSweeper) => {
 
 // Handles The Click Of The User On A Specific Tile
 const tileClickHandler = (e, i, j) => {
-    e.preventDefault();
+    if (e.preventDefault) e.preventDefault();
 
     // Left Click Will Remove The Tile If Successful, If Not It Won't Do Nothing
     if (e.button === 0) {
@@ -134,8 +134,11 @@ const start = () => {
 
     minesLeft.innerText = `Mines Left: ${mineSweeper.mines - mineSweeper.countFlags()}`;
 
+    if (twitchActionCallback) twitchActionCallback(mineSweeper, "start");
+
     // This Callback Is Executed When The Game Ends And The Player Lost (Shows All The Mines)
     mineSweeper.loseCallback = (row, col) => {
+        if (twitchActionCallback) twitchActionCallback(mineSweeper, "lose");
         let flags = document.getElementsByClassName("game-tile-flag");
         let mines = document.getElementsByClassName("game-tile-mine");
         for (let flag of flags) {
@@ -154,6 +157,7 @@ const start = () => {
 
     // This Callback Is Executed When The Game Ends And The Player Won
     mineSweeper.winCallback = (row, col) => {
+        if (twitchActionCallback) twitchActionCallback(mineSweeper, "win");
         minesLeft.innerText = `Mines Left: 0`;
         let flags = document.getElementsByClassName("game-tile-flag");
         for (let flag of flags) {
@@ -168,6 +172,7 @@ const start = () => {
 
     // This Callback Is Executed When A Tile Is Revealed So The Background Disapears And Shows The Number Behind It
     mineSweeper.revealCallback = (row, col) => {
+        if (twitchActionCallback) twitchActionCallback(mineSweeper, "reveal");
         let tileBackground = document.getElementById(`game-tile-background-${row}-${col}`);
         tileBackground.style.transform = `scale(0)`;
         if (mineSweeper.board[row][col]["near"] > 0) {
@@ -179,6 +184,7 @@ const start = () => {
 
     // This Callback Just Toggles A Flag On A Tile
     mineSweeper.flagCallback = (row, col) => {
+        if (twitchActionCallback) twitchActionCallback(mineSweeper, "flag");
         let flag = document.getElementById(`game-tile-flag-${row}-${col}`);
         if (mineSweeper.board[row][col]["flag"]) {
             flag.classList.remove("game-hidden");
@@ -192,7 +198,10 @@ const start = () => {
     };
 
     // This Callback Is For Rebuilding The Board For When The Displacement Function Is Executed
-    mineSweeper.rebuildBoardCallback = () => createBoard(mineSweeper);
+    mineSweeper.rebuildBoardCallback = () => {
+        createBoard(mineSweeper);
+        if (twitchActionCallback) twitchActionCallback(mineSweeper, "rebuild");
+    }
 
     createBoard(mineSweeper);
 

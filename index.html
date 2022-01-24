@@ -18,6 +18,7 @@
         <button id="settings-open" class="fas fa-cog"></button>
         <button id="help-button" class="fas fa-question"></button>
     </span>
+    <div id="twitch-controls"></div>
     <div id="message">
         <h2 id="message-text">You Lost!</h2>
         <button id="message-button">Play Again</button>
@@ -39,12 +40,36 @@
             </span>
             <span>
                 <label>Mines</label>
-                <input id="config-mines" type="number" min="1" value="50">
+                <input id="config-mines" type="number" min="1" value="45">
+            </span>
+        </form>
+        <h2>Twitch</h2>
+        <form id="config-form">
+            <span id="config-enable-twitch">
+                <label>Enable/Disable Twitch Connection</label>
+                <input id="config-enable-twitch-input" type="checkbox">
+            </span>
+            <span id="config-username">
+                <label>Username</label>
+                <input id="config-username-input" type="text">
+            </span>
+            <span id="config-mode-democracy">
+                <label>Democracy Mode</label>
+                <input id="config-mode-democracy-input" name="config-mode" type="radio" checked>
+            </span>
+            <span id="config-mode-democracy-votes">
+                <label>Votes To Perform Action</label>
+                <input id="config-mode-democracy-votes-input" type="number" min="1" value="20">
+            </span>
+            <span id="config-mode-chaos">
+                <label>Chaos Mode</label>
+                <input id="config-mode-chaos-input" name="config-mode" type="radio">
             </span>
         </form>
     </div>
     <script src="./tmi.min.js"></script>
     <script src="./game.js"></script>
+    <script src="./twitch.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>

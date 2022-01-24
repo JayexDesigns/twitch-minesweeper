@@ -7,13 +7,18 @@
     --config-text-color: #424242;
     --config-shadow-color: #42424220;
 
-    --game-tile-color: #dddddd;
+    --game-tile-color: #cccccc;
     --game-tile-hover-color: #eeeeee;
+    --game-tile-hovering: #777777;
+    --game-tile-hovering-revealed: #eeeeee;
     --game-icons-color: #424242;
 
     --message-background-color: #ffffff;
     --message-text-color: #424242;
     --message-shadow-color: #42424220;
+
+    --twitch-controls-background-color: #000000b0;
+    --twitch-controls-text-color: #ffffff;
 }
 
 body, body * {
@@ -129,6 +134,54 @@ h1 {
 
 
 
+#config-username {
+    visibility: hidden;
+}
+
+#config-mode-democracy {
+    visibility: hidden;
+}
+
+#config-mode-democracy-votes {
+    margin-left: 2rem !important;
+    visibility: hidden;
+}
+
+#config-mode-chaos {
+    visibility: hidden;
+}
+
+#twitch-controls {
+    position: fixed;
+    z-index: 15;
+    top: 0;
+    width: 100vw;
+    height: 8rem;
+    background-color: var(--twitch-controls-background-color);
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+#twitch-controls p {
+    margin: 0 2rem;
+    color: var(--twitch-controls-text-color);
+    font-weight: 600;
+    font-size: 1.25rem;
+    visibility: hidden;
+}
+
+.twitch-control-play-action {
+    position: absolute;
+    margin: 0 auto;
+}
+
+
+
 
 
 #game-mines-left {
@@ -149,7 +202,10 @@ h1 {
     position: relative;
     width: 100%;
     padding-top: 100%;
+    background-color: var(--background-color);
     cursor: pointer;
+    border-radius: 0.5rem;
+    transition: .15 ease-in-out;
 }
 
 .game-tile-background {
@@ -161,6 +217,15 @@ h1 {
     border-radius: 0.5rem;
     transition: .15s ease-in-out;
     z-index: 2;
+}
+
+.game-tile-hovering {
+    background-color: var(--game-tile-hovering) !important;
+}
+
+.game-tile-hovering-revealed {
+    background-color: var(--game-tile-hovering-revealed) !important;
+
 }
 
 .game-tile:hover .game-tile-background {
