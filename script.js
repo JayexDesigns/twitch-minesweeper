@@ -75,6 +75,23 @@ const changeTheme = () => {
         root.style.setProperty('--twitch-controls-background-color', '#000000b0');
         root.style.setProperty('--twitch-controls-text-color', '#fff4ef');
     }
+    else if (currentTheme === "sunixdx") {
+        root.style.setProperty('--background-color', '#160622');
+        root.style.setProperty('--text-color', '#ffffff');
+        root.style.setProperty('--config-background-color', '#22122e');
+        root.style.setProperty('--config-text-color', '#ffffff');
+        root.style.setProperty('--config-shadow-color', '#42424220');
+        root.style.setProperty('--game-tile-color', '#9d1cf7');
+        root.style.setProperty('--game-tile-hover-color', '#6e1830');
+        root.style.setProperty('--game-tile-hovering', '#d499ff');
+        root.style.setProperty('--game-tile-hovering-revealed', '#4c335f');
+        root.style.setProperty('--game-icons-color', '#ffffff');
+        root.style.setProperty('--message-background-color', '#22122e');
+        root.style.setProperty('--message-text-color', '#ffffff');
+        root.style.setProperty('--message-shadow-color', '#42424220');
+        root.style.setProperty('--twitch-controls-background-color', '#000000b0');
+        root.style.setProperty('--twitch-controls-text-color', '#ffffff');
+    }
 };
 
 themeButton.addEventListener('click', () => changeTheme());

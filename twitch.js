@@ -72,6 +72,10 @@ twitchUsernameInput.addEventListener('change', (e) => {
         currentTheme = "natsumiii";
         changeTheme();
     }
+    else if (username.toLowerCase() === "sunixdx") {
+        currentTheme = "sunixdx";
+        changeTheme();
+    }
     client.connect();
     startTwitchPlaymode();
     twitchControls.style.visibility = "visible";
